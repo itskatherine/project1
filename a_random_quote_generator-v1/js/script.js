@@ -46,7 +46,7 @@ quotes = [
  * `getRandomQuote` function
  ***/
 function getRandomQuote() {
-  let randomNumber = Math.round(Math.random() * quotes.length - 1);
+  let randomNumber = Math.round(Math.random() * (quotes.length - 1));
   return quotes[randomNumber];
 }
 
