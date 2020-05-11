@@ -28,7 +28,6 @@ quotes = [
     quote: "Your secret is safe with my indifference",
     source: "Lord Percival Fredrickstein von Musel Klossowski de Rolo III",
     citation: "Critical Role, C1 Episode 45",
-    year: 2016,
   },
   {
     quote: "I told you I was ill.",
@@ -39,7 +38,6 @@ quotes = [
   {
     quote: "One small step for a man, one giant leap for mankind",
     source: "Neil Armstrong",
-    citation: "Moon landing",
     year: 1992,
   },
 ];
@@ -47,10 +45,31 @@ quotes = [
 /***
  * `getRandomQuote` function
  ***/
+function getRandomQuote() {
+  let randomNumber = Math.round(Math.random() * quotes.length - 1);
+  return quotes[randomNumber];
+}
 
 /***
  * `printQuote` function
  ***/
+function printQuote() {
+  let randomQuoteObj = getRandomQuote();
+  let htmlString = `<p class = "quote">${randomQuoteObj.quote}</p>
+  <p class = "source">${randomQuoteObj.source}`;
+
+  if (randomQuoteObj.citation) {
+    htmlString += `<span class = "citation"> ${randomQuoteObj.citation}</span>`;
+  }
+
+  if (randomQuoteObj.year) {
+    htmlString += `<span class = "year"> ${randomQuoteObj.year}</span>`;
+  }
+
+  htmlString += "</p>";
+
+  document.getElementById("quote-box").innerHTML = htmlString;
+}
 
 /***
  * click event listener for the print quote button
