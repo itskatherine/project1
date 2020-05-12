@@ -7,6 +7,8 @@ project 1 - A Random Quote Generator
 // Check the "Project Resources" section of the project instructions
 // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
+// In this project I'm aiming for the "Exceeds Expectations" grade
+
 /***
  * `quotes` array
  ***/
@@ -49,10 +51,27 @@ quotes = [
 /***
  * `getRandomQuote` function
  ***/
+
+/**
+ * This function returns a random quote object from an array of objects in
+ * the quotes array
+ *
+ * @return {object} An object from the quotes array;
+ *
+ */
+
 function getRandomQuote() {
   let randomNumber = Math.round(Math.random() * (quotes.length - 1)); //generates a random number 0-4;
   return quotes[randomNumber]; //returns the object with the index determined above.
 }
+
+/***
+ * `changeBackgroundColor` function
+ ***/
+/**
+ * This function generates a random RGB value and changes the body html style to it.
+ *
+ */
 
 function changeBackgroundColor() {
   //generates a random RGB value and stores it in randomColor variable
@@ -68,19 +87,21 @@ function changeBackgroundColor() {
 /***
  * `printQuote` function
  ***/
-function printQuote() {
-  //this function takes a randomly generated quote object from the
-  //getRandomQuote() function and returns a html string
-  //the string is comprised of the quote and the source
 
+/**
+ * this function takes a randomly generated quote object from the
+ * getRandomQuote() function and returns a html string
+ * the string is comprised of the quote and the source
+ * the function will check if the citation and year properties are
+ * present and print them within span tags if they are.
+ *
+ */
+
+function printQuote() {
   let randomQuoteObj = getRandomQuote();
 
   let htmlString = `<p class = "quote">${randomQuoteObj.quote}</p>
   <p class = "source">${randomQuoteObj.source}`;
-
-  //the function will check if the citation and year properties are
-  //present (if they are they will return a truthy property)
-  //and print them within span tags if they are.
 
   if (randomQuoteObj.citation) {
     htmlString += `<span class = "citation"> ${randomQuoteObj.citation}</span>`;
